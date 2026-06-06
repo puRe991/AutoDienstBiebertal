@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/content/site';
+---
+<BaseLayout title="Impressum" description="Impressum von Auto Dienst Biebertal.">
+  <section class="page-hero"><div class="container stack"><h1>Impressum</h1><p class="lead">Angaben gemäß § 5 TMG.</p></div></section>
+  <section class="section section--paper">
+    <div class="container stack">
+      <h2>{site.legalName}</h2>
+      <p class="dark-muted">{site.address.street}<br />{site.address.postalCode} {site.address.city}<br />Deutschland</p>
+      <p class="dark-muted">Telefon: <a href={site.phoneHref}>{site.phoneDisplay}</a><br />Fax: {site.faxDisplay}<br />E-Mail: <a href={site.emailHref}>{site.email}</a></p>
+      <p class="dark-muted">Vertretungsberechtigte, Registerdaten, Umsatzsteuer-ID und zuständige Kammer bitte vor Veröffentlichung anhand der offiziellen Unternehmensunterlagen ergänzen.</p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrustBar from '@/components/TrustBar.astro';
+---
+<BaseLayout title="Über uns" description="Auto Dienst Biebertal ist seit 2005 als KFZ-Meisterwerkstatt in Biebertal tätig.">
+  <section class="page-hero">
+    <div class="container stack">
+      <div class="breadcrumb"><a href="/">Start</a> / Über uns</div>
+      <span class="eyebrow">Seit 2005 in Biebertal</span>
+      <h1>Eine Werkstatt muss Vertrauen schaffen, bevor sie repariert.</h1>
+      <p class="lead">Auto Dienst Biebertal steht für persönliche Annahme, saubere Diagnose und fachgerechte Arbeit an Fahrzeugen vieler Marken.</p>
+      <TrustBar />
+    </div>
+  </section>
+  <section class="section section--paper">
+    <div class="container split">
+      <div class="stack">
+        <span class="eyebrow">Haltung</span>
+        <h2>Wir erklären Technik verständlich.</h2>
+        <p class="dark-muted lead">Gute Werkstattarbeit endet nicht mit dem Austausch eines Teils. Sie beginnt mit dem richtigen Prüfweg und endet mit einer klaren Erklärung, was gemacht wurde und warum.</p>
+      </div>
+      <div class="grid grid-2">
+        <article class="card service-card"><h3>Keine Reparatur auf Verdacht</h3><p class="dark-muted">Diagnose bedeutet: Fehlerbild erfassen, Daten prüfen und Ursache eingrenzen.</p></article>
+        <article class="card service-card"><h3>Rücksprache vor Zusatzarbeiten</h3><p class="dark-muted">Wenn während der Arbeit weitere Mängel auffallen, stimmen wir den nächsten Schritt ab.</p></article>
+        <article class="card service-card"><h3>Regional erreichbar</h3><p class="dark-muted">Kurze Wege, persönliche Ansprechpartner und eine Werkstatt vor Ort.</p></article>
+        <article class="card service-card"><h3>Für moderne Fahrzeuge</h3><p class="dark-muted">Elektronik, Assistenzsysteme und klassische Mechanik gehören heute zusammen.</p></article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

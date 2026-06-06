@@ -1,0 +1,17 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/content/site';
+---
+<BaseLayout title="Datenschutz" description="Datenschutzhinweise von Auto Dienst Biebertal.">
+  <section class="page-hero"><div class="container stack"><h1>Datenschutz</h1><p class="lead">Kurzfassung der Datenverarbeitung auf dieser Website.</p></div></section>
+  <section class="section section--paper">
+    <div class="container stack">
+      <h2>Verantwortlicher</h2>
+      <p class="dark-muted">{site.legalName}, {site.address.street}, {site.address.postalCode} {site.address.city}, E-Mail: <a href={site.emailHref}>{site.email}</a>.</p>
+      <h2>Kontakt- und Terminanfragen</h2>
+      <p class="dark-muted">Wenn Sie das Terminformular nutzen, verarbeiten wir Ihre Angaben ausschließlich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme. Bitte tragen Sie keine unnötig sensiblen Daten ein.</p>
+      <h2>Hinweis vor Veröffentlichung</h2>
+      <p class="dark-muted">Diese Seite ersetzt keine anwaltliche Prüfung. Hostinganbieter, Analysewerkzeuge, Kartenanbieter und konkrete Speicherfristen müssen vor Livegang ergänzt werden.</p>
+    </div>
+  </section>
+</BaseLayout>

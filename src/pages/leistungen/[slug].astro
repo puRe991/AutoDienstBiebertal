@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppointmentForm from '@/components/AppointmentForm.astro';
+import { services } from '@/content/services';
+import { site } from '@/content/site';
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+const { service } = Astro.props;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: service.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+  }))
+};
+---
+<BaseLayout title={service.title} description={service.teaser} canonical={`/leistungen/${service.slug}/`} jsonLd={[faqSchema]}>
+  <section class="page-hero">
+    <div class="container stack">
+      <div class="breadcrumb"><a href="/">Start</a> / <a href="/leistungen/">Leistungen</a> / {service.shortTitle}</div>
+      <span class="eyebrow">{site.tagline}</span>
+      <h1>{service.title}</h1>
+      <p class="lead">{service.intro}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/kontakt/#termin">Termin anfragen</a>
+        <a class="btn btn--ghost" href={site.phoneHref}>{site.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+  <section class="section section--paper">
+    <div class="container split">
+      <div class="stack">
+        <span class="eyebrow">Typische Anlässe</span>
+        <h2>Wann Sie zu uns kommen sollten.</h2>
+        <ul class="check-list">
+          {service.problems.map((problem) => <li>{problem}</li>)}
+        </ul>
+      </div>
+      <div class="stack">
+        <span class="eyebrow">Ablauf</span>
+        <h2>So gehen wir vor.</h2>
+        <ol class="check-list">
+          {service.steps.map((step) => <li>{step}</li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="section section--paper">
+    <div class="container split">
+      <div class="stack faq">
+        <span class="eyebrow">FAQ</span>
+        <h2>Häufige Fragen.</h2>
+        {service.faqs.map((faq) => (
+          <details>
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <AppointmentForm />
+    </div>
+  </section>
+</BaseLayout>

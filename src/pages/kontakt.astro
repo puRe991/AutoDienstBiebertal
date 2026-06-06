@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppointmentForm from '@/components/AppointmentForm.astro';
+import { site } from '@/content/site';
+const sent = Astro.url.searchParams.get('gesendet') === '1';
+---
+<BaseLayout title="Kontakt & Termin" description="Termin bei Auto Dienst Biebertal anfragen, anrufen oder Route zur Werkstatt planen.">
+  <section class="page-hero">
+    <div class="container stack">
+      <div class="breadcrumb"><a href="/">Start</a> / Kontakt</div>
+      <span class="eyebrow">Kontakt</span>
+      <h1>Termin anfragen oder direkt anrufen.</h1>
+      <p class="lead">Beschreiben Sie kurz Ihr Anliegen. Wir melden uns mit einem passenden Terminfenster oder Rückfragen.</p>
+    </div>
+  </section>
+  <section class="section section--paper">
+    <div class="container split">
+      <div class="stack">
+        {sent && <div class="card service-card"><strong>Anfrage gesendet.</strong><p class="dark-muted">Vielen Dank. Falls die Anfrage dringend ist, rufen Sie uns bitte zusätzlich an.</p></div>}
+        <h2>Auto Dienst Biebertal</h2>
+        <p class="dark-muted">{site.address.street}<br />{site.address.postalCode} {site.address.city}</p>
+        <p><a class="btn btn--dark" href={site.phoneHref}>{site.phoneDisplay}</a></p>
+        <p><a class="btn btn--primary" href={site.mapsUrl} target="_blank" rel="noreferrer">Route planen</a></p>
+        <div class="stack">
+          <strong>Öffnungszeiten</strong>
+          {site.openingHours.map((line) => <p class="dark-muted">{line}</p>)}
+        </div>
+      </div>
+      <AppointmentForm />
+    </div>
+  </section>
+</BaseLayout>

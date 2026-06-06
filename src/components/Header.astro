@@ -1,0 +1,18 @@
+---
+import { navItems, site } from '@/content/site';
+---
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="/" aria-label="Auto Dienst Biebertal Startseite">
+      <span class="logo__mark" aria-hidden="true">ADB</span>
+      <span>Auto Dienst<br />Biebertal</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="header__actions">
+      <a class="btn btn--ghost" href={site.phoneHref}>{site.phoneDisplay}</a>
+      <a class="btn btn--primary" href="/kontakt/#termin">Termin anfragen</a>
+    </div>
+  </div>
+</header>

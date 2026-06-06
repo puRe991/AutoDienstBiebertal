@@ -1,0 +1,14 @@
+---
+import type { Service } from '@/content/services';
+const { services } = Astro.props as { services: Service[] };
+---
+<div class="grid grid-3">
+  {services.map((service, index) => (
+    <article class="card service-card">
+      <div class="service-card__icon" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+      <h3>{service.shortTitle}</h3>
+      <p class="dark-muted">{service.teaser}</p>
+      <a href={`/leistungen/${service.slug}/`}>Details ansehen →</a>
+    </article>
+  ))}
+</div>

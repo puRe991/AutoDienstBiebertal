@@ -1,0 +1,31 @@
+---
+import { navItems, site } from '@/content/site';
+import { services } from '@/content/services';
+---
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="stack">
+      <a class="logo" href="/">
+        <span class="logo__mark" aria-hidden="true">ADB</span>
+        <span>Auto Dienst<br />Biebertal</span>
+      </a>
+      <p class="lead">{site.description}</p>
+    </div>
+    <div class="stack">
+      <strong>Kontakt</strong>
+      <a href={site.phoneHref}>{site.phoneDisplay}</a>
+      <a href={site.emailHref}>{site.email}</a>
+      <a href={site.mapsUrl} target="_blank" rel="noreferrer">Route planen</a>
+    </div>
+    <div class="stack">
+      <strong>Leistungen</strong>
+      {services.slice(0, 5).map((service) => <a href={`/leistungen/${service.slug}/`}>{service.shortTitle}</a>)}
+    </div>
+    <div class="stack">
+      <strong>Seiten</strong>
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </div>
+  </div>
+</footer>

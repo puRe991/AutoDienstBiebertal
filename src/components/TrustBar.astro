@@ -1,0 +1,11 @@
+---
+import { trustItems } from '@/content/trust';
+---
+<div class="trust" aria-label="Vertrauensmerkmale">
+  {trustItems.map((item) => (
+    <div class="trust__item">
+      <div class="trust__value">{item.value}</div>
+      <div class="trust__label">{item.label}</div>
+    </div>
+  ))}
+</div>
