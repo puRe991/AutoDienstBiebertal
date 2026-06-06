@@ -1,0 +1,52 @@
+---
+import { services } from '@/content/services';
+---
+<form class="form" id="termin" name="terminanfrage" method="post" data-netlify="true" netlify-honeypot="website" action="/kontakt/?gesendet=1">
+  <input type="hidden" name="form-name" value="terminanfrage" />
+  <div class="field" hidden>
+    <label>Website <input name="website" autocomplete="off" tabindex="-1" /></label>
+  </div>
+  <div class="form__row">
+    <div class="field">
+      <label for="name">Name *</label>
+      <input id="name" name="name" autocomplete="name" required minlength="2" maxlength="100" />
+    </div>
+    <div class="field">
+      <label for="phone">Telefon *</label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9+() /-]{6,}" maxlength="40" />
+    </div>
+  </div>
+  <div class="form__row">
+    <div class="field">
+      <label for="email">E-Mail</label>
+      <input id="email" name="email" type="email" autocomplete="email" maxlength="120" />
+    </div>
+    <div class="field">
+      <label for="service">Leistung *</label>
+      <select id="service" name="service" required>
+        <option value="">Bitte auswählen</option>
+        {services.map((service) => <option value={service.shortTitle}>{service.shortTitle}</option>)}
+        <option value="Sonstiges">Sonstiges</option>
+      </select>
+    </div>
+  </div>
+  <div class="form__row">
+    <div class="field">
+      <label for="vehicle">Fahrzeug</label>
+      <input id="vehicle" name="vehicle" placeholder="z. B. VW Golf 7, 1.6 TDI" maxlength="120" />
+    </div>
+    <div class="field">
+      <label for="date">Wunschtermin</label>
+      <input id="date" name="date" type="date" />
+    </div>
+  </div>
+  <div class="field">
+    <label for="message">Anliegen *</label>
+    <textarea id="message" name="message" required minlength="10" maxlength="1500" placeholder="Was ist aufgefallen? Gibt es Warnleuchten, Geräusche oder Fristen wie HU/AU?"></textarea>
+    <small>Bitte keine hochsensiblen Daten eintragen. Wir melden uns zur Terminbestätigung.</small>
+  </div>
+  <div class="field">
+    <label><input type="checkbox" name="privacy" required /> Ich stimme zu, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden. *</label>
+  </div>
+  <button class="btn btn--dark" type="submit">Termin unverbindlich anfragen</button>
+</form>

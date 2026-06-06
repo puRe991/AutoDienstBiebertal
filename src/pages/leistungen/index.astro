@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceGrid from '@/components/ServiceGrid.astro';
+import { services } from '@/content/services';
+---
+<BaseLayout title="Leistungen" description="Leistungen der KFZ-Meisterwerkstatt Auto Dienst Biebertal: Service, Reparatur, HU/AU, Klima, Reifen, Diagnose und Unfallinstandsetzung.">
+  <section class="page-hero">
+    <div class="container stack">
+      <div class="breadcrumb"><a href="/">Start</a> / Leistungen</div>
+      <span class="eyebrow">Werkstattleistungen</span>
+      <h1>Service für Fahrzeuge aller Marken.</h1>
+      <p class="lead">Wir verbinden handwerkliche Werkstattarbeit mit moderner Diagnose und klarer Kommunikation.</p>
+    </div>
+  </section>
+  <section class="section section--paper">
+    <div class="container stack">
+      <ServiceGrid services={services} />
+    </div>
+  </section>
+</BaseLayout>

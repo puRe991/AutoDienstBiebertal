@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.autodienst-biebertal.de/sitemap.xml

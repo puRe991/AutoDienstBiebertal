@@ -1,0 +1,68 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrustBar from '@/components/TrustBar.astro';
+import ServiceGrid from '@/components/ServiceGrid.astro';
+import AppointmentForm from '@/components/AppointmentForm.astro';
+import { featuredServices } from '@/content/services';
+import { processSteps } from '@/content/trust';
+import { site } from '@/content/site';
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero__content">
+      <div class="hero__copy">
+        <span class="eyebrow">KFZ-Meisterwerkstatt in Biebertal</span>
+        <h1>Werkstattservice, der Probleme sauber löst.</h1>
+        <p class="lead">Wartung, Reparatur, HU/AU, Diagnose, Klima und Reifenservice für Fahrzeuge aller Marken – mit klarer Rücksprache statt Teiletausch auf Verdacht.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/kontakt/#termin">Termin anfragen</a>
+          <a class="btn btn--ghost" href={site.phoneHref}>{site.phoneDisplay}</a>
+          <a class="btn btn--ghost" href={site.mapsUrl} target="_blank" rel="noreferrer">Route planen</a>
+        </div>
+      </div>
+      <div class="dark-card hero__panel">
+        <div class="hero__visual" aria-label="Abstrakte Fahrzeuggrafik in Werkstattoptik"></div>
+        <div class="quickfacts">
+          <div class="quickfact"><strong>Persönliche Annahme</strong><span>Sie sprechen mit Menschen, die Ihr Fahrzeug verstehen.</span></div>
+          <div class="quickfact"><strong>Strukturierte Diagnose</strong><span>Fehlercodes werden geprüft, nicht blind abgearbeitet.</span></div>
+          <div class="quickfact"><strong>Transparente Arbeiten</strong><span>Zusatzarbeiten nur nach Rücksprache.</span></div>
+        </div>
+      </div>
+      <TrustBar />
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container stack">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Alles, was eine moderne Werkstatt können muss – klar gegliedert.</h2>
+      <p class="dark-muted lead">Von der Inspektion bis zur elektronischen Fehlersuche: Jede Leistung hat einen nachvollziehbaren Ablauf und einen festen Ansprechpartner.</p>
+      <ServiceGrid services={featuredServices} />
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container split">
+      <div class="stack">
+        <span class="eyebrow">Ablauf</span>
+        <h2>Keine Blackbox. Sie wissen, was passiert.</h2>
+        <p class="lead">Werkstatttermine werden unnötig stressig, wenn Informationen fehlen. Deshalb fragen wir die relevanten Daten früh ab und erklären den nächsten Schritt.</p>
+        <a class="btn btn--primary" href="/kontakt/#termin">Jetzt Termin anfragen</a>
+      </div>
+      <ol class="check-list">
+        {processSteps.map((step) => <li>{step}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container split">
+      <div class="stack">
+        <span class="eyebrow">Termin</span>
+        <h2>Senden Sie uns Ihr Anliegen. Wir melden uns zur Abstimmung.</h2>
+        <p class="dark-muted lead">Das Formular fragt genau die Daten ab, die für eine seriöse Ersteinschätzung helfen. Wenn es dringend ist, rufen Sie direkt an.</p>
+      </div>
+      <AppointmentForm />
+    </div>
+  </section>
+</BaseLayout>
